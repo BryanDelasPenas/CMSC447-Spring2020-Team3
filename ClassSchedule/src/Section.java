@@ -9,6 +9,7 @@ public class Section {
 	private String time;
 	private int sectionNum;
 	private int capacity;
+	private String version;
 	private Instructor instructor;
 	private Course course;
 	
@@ -45,6 +46,12 @@ public class Section {
 		this.capacity = capacity;
 	}
 	
+	// Setter for Version of class
+	public void setVersion(String version)
+	{
+		this.version = version;
+	}
+	
 	//Setter for Section Instructor
 	public void setInstructor(Instructor instructor) {
 		this.instructor = instructor;
@@ -78,6 +85,12 @@ public class Section {
 	//Getter for Section Capacity
 	public int getCapacity() {
 		return capacity;
+	}
+	
+	// Getter for Version of Classroom
+	public String getVersion()
+	{
+		return version; 
 	}
 	
 	//Getter for Section Instructor

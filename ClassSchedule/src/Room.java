@@ -5,6 +5,13 @@ public class Room {
 	private int capacity;
 	private String classroom;
 	
+	// Overload Constructor 
+	Room(String name, int cap)
+	{
+		capacity = cap;
+		classroom = name;
+	}
+	
 	//Setter for Room Capacity
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
