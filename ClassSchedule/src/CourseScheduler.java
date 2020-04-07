@@ -29,8 +29,6 @@ public class CourseScheduler {
 		// Create a count var to skip the first line 
 		int iteration_classroom = 0;
 		
-		// Create a Section Placement object for when to optimize. 
-		SectionPlacement opta_planner = new SectionPlacement();
 		try
 		{	
 			br_classroom = new BufferedReader(new FileReader(file_classroom));
@@ -56,8 +54,7 @@ public class CourseScheduler {
 				// System.out.println("classroom: " + data_classroom[0] + ", capacity:" + cap);
 				class_list.add(new Room(data_classroom[0],cap));
 			}
-			// Sets the new list for opta_planner to work 
-			opta_planner.setRoomList(class_list);
+			
 		}
 		catch(IOException e)
 		{
