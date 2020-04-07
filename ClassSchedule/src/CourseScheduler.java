@@ -16,46 +16,6 @@ public class CourseScheduler {
 	public static void main(String[] args) 
 	{
 		// TODO Auto-generated method stub
-
-		// Read in both excel files, Classroom and Scheduler 
-		// Read each file line by line.
-		// Only stopping when you reach a comma. Then go to next element  
-		// For Classroom, c_element[0] = Building and Room Location 
-		//                c_element[1] = The Maximum Capacity of the Room 
-	
-		// For Schedule, s_element[0] = Subject       s_element[4] = Section Number
-	    //               s_element[1] = Course Number s_element[5] = Instructor 
-		//               s_element[2] = Course Title  s_element[6] = Time 
-		//               s_element[3] = Version       s_element[7] = Maximum Capacity of the Class 
-		
-		// For each class will have the value to the corresponding element
-		// class Course: 
-		// 1. setSubject()      = s_element[0]
-		// 2. setCourseNum()    = s_element[1]
-		// 3. setCourseTittle() = s_element[2]
-		
-		// class Instructor:
-		// 1. setInstructor()   = s_element[5]
-
-		// class Room: 
-		// setCapacity()        = c_element[1]
-		// setClassroom()       = c_element[0]
-		// setSection()         = class Section 
-
-		// class Section:       Note: Since in element[6], the day and the time are combined, example "mw530"
-		//                            You have to parse the string in the middle to get the time and the day
-		// setDay()             = s_element[6]
-		// setTime()            = s_element[6]
-		// setSectionNum()      = s_element[4]
-		// setCapacity()        = s_element[7]
-		// setVersion()         = s_element[3]
-		// setInstructor()      = class Instructor
-		// setCourse()          = class Course
-		
-		// Class Relationships 
-		// Section -> Course 
-		//         -> Room 
-		//         -> Instructor
 		
 		// Create a string for the file name 
 		String file_classroom = "src/CSV data files/Classroom.csv";
@@ -77,6 +37,7 @@ public class CourseScheduler {
 			List<Room> class_list = new ArrayList<Room>();
 			while ((line_classroom = br_classroom.readLine()) != null)
 			{
+				// This is made to skip the first cell, title cell.
 				if(iteration_classroom == 0)
 				{
 					iteration_classroom++;
@@ -92,7 +53,7 @@ public class CourseScheduler {
 				int cap = Integer.parseInt(data_classroom[1]);
 	
 				// Prints out for testing purposes
-				System.out.println("classroom: " + data_classroom[0] + ", capacity:" + cap);
+				// System.out.println("classroom: " + data_classroom[0] + ", capacity:" + cap);
 				class_list.add(new Room(data_classroom[0],cap));
 			}
 			// Sets the new list for opta_planner to work 
@@ -116,6 +77,7 @@ public class CourseScheduler {
 		int iteration_schedule = 0;
 		try
 		{
+			// Defintions for the strings and int needed 
 			String course_string = "";
 			String course_number_string = "";
 			String course_title_string = "";
@@ -163,12 +125,14 @@ public class CourseScheduler {
 					days_string = "MoWeFr";
 					time_string = data_schedule[6].substring(3,data_schedule[6].length());
 				}
+				// Check for m 
 				else if(first_element == 'm' || first_element == 'M' )
 				{
 					// MW
 					days_string = "MoWe";
 					time_string = data_schedule[6].substring(2,data_schedule[6].length());
 				}
+				// Check for t
 				else if(first_element == 't' || first_element == 'T')
 				{
 					// TT
@@ -190,7 +154,6 @@ public class CourseScheduler {
 		catch(IOException e)
 		{
 			e.printStackTrace();
-		
 		}
 	
 	}	
