@@ -3,10 +3,10 @@ public class Instructor {
 		
 	//Variable Declaration for Instructor
 	private String instructor;
-		
-	//Setter for Instructor Name
-	public void setInstructor(String instructor) {
-		this.instructor = instructor;
+	
+	//Overloaded Constructor
+	Instructor(String name){
+		instructor = name;
 	}
 	
 	//Getter for Instructor Name

@@ -6,18 +6,11 @@ public class Course {
 	private int courseNum;
 	private String courseTitle;
 	
-	//Setter for Course Subject
-	public void setSubject(String subject){
-		this.subject = subject;
-	}
-	//Setter for Course Num
-	public void setCourseNum(int courseNum) {
-		this.courseNum = courseNum;
-	}
-	
-	//Setter for Course Title
-	public void setCourseTitle(String courseTitle) {
-		this.courseTitle = courseTitle;
+	//Overloaded Constructor
+	Course(String sub, int num, String title){
+		subject = sub;
+		courseNum = num;
+		courseTitle = title;
 	}
 	
 	//Getter for Course Subject
@@ -39,6 +32,7 @@ public class Course {
 	@Override
 	public String toString() {
 		return subject + " " + Integer.toString(courseNum) + " " + courseTitle;
+		
 	}
 }
 

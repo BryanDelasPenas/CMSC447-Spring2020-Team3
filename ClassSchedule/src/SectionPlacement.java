@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningScore;
@@ -22,14 +23,9 @@ public class SectionPlacement {
 	@PlanningScore
 	private HardSoftScore score;
 	
-	//Setter for roomList
-	public void setRoomList(List<Room> roomList) {
-		this.roomList = roomList;
-	}
-	
-	//Setter for sectionList
-	public void setSectionList(List<Section> sectionList) {
-		this.sectionList = sectionList;
+	public SectionPlacement(List<Room> rL, List<Section> sL){
+		this.roomList = rL;
+		this.sectionList = sL;
 	}
 	
 	//Getter for list of rooms

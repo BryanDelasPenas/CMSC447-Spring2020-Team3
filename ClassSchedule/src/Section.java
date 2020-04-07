@@ -7,7 +7,7 @@ public class Section {
 	//Variable Declarations
 	private String day;
 	private String time;
-	private int sectionNum;
+	private String sectionNum;
 	private int capacity;
 	private String version;
 	private Instructor instructor;
@@ -17,54 +17,15 @@ public class Section {
 	@PlanningVariable(valueRangeProviderRefs = "roomRange")
 	private Room room;
 	
-	//Planning Id
-	@PlanningId
-	private Long id;
-	
-	//Setter for Section ID
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	//Setter for Section Day
-	public void setDay(String day) {
-		this.day = day;
-	}
-	
-	//Setter for Section Time
-	public void setTime(String time) {
-		this.time = time;
-	}
-	
-	//Setter for Section Number
-	public void setSectionNum(int sectionNo) {
-		this.sectionNum = sectionNo;
-	}
-	
-	//Setter for Section Capacity
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
-	}
-	
-	// Setter for Version of class
-	public void setVersion(String version)
-	{
-		this.version = version;
-	}
-	
-	//Setter for Section Instructor
-	public void setInstructor(Instructor instructor) {
-		this.instructor = instructor;
-	}
-	
-	//Setter for Section Course Assignment
-	public void setCourse(Course course) {
+	//Overloaded Constructor
+	Section(Course course, String secNum, String day, String time, Instructor inst, String version, int cap){
 		this.course = course;
-	}
-	
-	//Getter for Section ID
-	public long getId() {
-		return id;
+		this.sectionNum = secNum;
+		this.day = day;
+		this.time = time;
+		this.instructor = inst;
+		this.version = version;
+		this.capacity = cap;
 	}
 	
 	//Getter for Section Day
@@ -78,7 +39,7 @@ public class Section {
 	}
 	
 	//Getter for Section Number
-	public int getSectionNum() {
+	public String getSectionNum() {
 		return sectionNum;
 	}
 	

@@ -58,7 +58,8 @@ public class CourseScheduler {
 		BufferedReader br = null; 
 		String line_classroom = ""; 
 		int iteration = 0;
-		SectionPlacement opta_planner = new SectionPlacement();
+		//SectionPlacement opta_planner = new SectionPlacement();
+	
 		try
 		{	
 			br = new BufferedReader(new FileReader(file_classroom));
@@ -80,16 +81,15 @@ public class CourseScheduler {
 				int cap = Integer.parseInt(data_classroom[1]);
 	
 				// Prints out for testing purposes
-				System.out.println("classroom: " + data_classroom[0] + ", capacity:" + cap);
+				System.out.println("Classroom: " + data_classroom[0] + ", Capacity:" + cap);
 				class_list.add(new Room(data_classroom[0],cap));
 			}
 			// Sets the new list for opta_planner to work 
-			opta_planner.setRoomList(class_list);
+			//opta_planner.setRoomList(class_list);
 		}
 		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
-		
 	}	
 }
