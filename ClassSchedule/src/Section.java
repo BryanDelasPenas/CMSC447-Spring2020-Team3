@@ -18,7 +18,7 @@ public class Section {
 	private Room room;
 	
 	//Overloaded Constructor
-	Section(Course course, String secNum, String day, String time, Instructor inst, String version, int cap){
+	public Section(Course course, String secNum, String day, String time, Instructor inst, String version, int cap){
 		this.course = course;
 		this.sectionNum = secNum;
 		this.day = day;

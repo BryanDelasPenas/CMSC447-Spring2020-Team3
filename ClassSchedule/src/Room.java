@@ -6,7 +6,7 @@ public class Room {
 	private String classroom;
 	
 	//Overload Constructor 
-	Room(String name, int cap)
+	public Room(String name, int cap)
 	{
 		capacity = cap;
 		classroom = name;

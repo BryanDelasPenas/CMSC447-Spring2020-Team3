@@ -7,7 +7,7 @@ public class Course {
 	private String courseTitle;
 	
 	//Overloaded Constructor
-	Course(String sub, int num, String title){
+	public Course(String sub, int num, String title){
 		subject = sub;
 		courseNum = num;
 		courseTitle = title;

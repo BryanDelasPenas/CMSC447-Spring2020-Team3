@@ -5,7 +5,7 @@ public class Instructor {
 	private String instructor;
 	
 	//Overloaded Constructor
-	Instructor(String name){
+	public Instructor(String name){
 		instructor = name;
 	}
 	
