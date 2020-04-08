@@ -9,13 +9,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.*; 
 
 public class CourseScheduler {
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
 		
 		// Create a string for the file name 
 		String file_classroom = "src/CSV data files/Classroom.csv";
@@ -29,6 +28,7 @@ public class CourseScheduler {
 		// Create a count var to skip the first line 
 		int iteration_classroom = 0;
 		
+		//Block to import classroom information
 		try
 		{	
 			br_classroom = new BufferedReader(new FileReader(file_classroom));
@@ -51,10 +51,12 @@ public class CourseScheduler {
 				int cap = Integer.parseInt(data_classroom[1]);
 	
 				// Prints out for testing purposes
-				// System.out.println("classroom: " + data_classroom[0] + ", capacity:" + cap);
+				//System.out.println("Classroom: " + data_classroom[0] + ", Capacity:" + cap);
 				class_list.add(new Room(data_classroom[0],cap));
 			}
-			
+			for(Room r : class_list) {
+				System.out.println(r.toString());
+			}
 		}
 		catch(IOException e)
 		{
@@ -86,6 +88,7 @@ public class CourseScheduler {
 			String capacity_string = "";
 			int section_int = 0;
 			int time_int = 0;
+			int end_time_int=0;
 			int capacity_int = 0;
 			br_schedule = new BufferedReader(new FileReader(file_schedule));
 			List<Section> schedule_list = new ArrayList<Section>();
@@ -142,10 +145,25 @@ public class CourseScheduler {
 				//course_number_int = Integer.parseInt(course_number_string);
 				section_int = Integer.parseInt(section_string);
 				time_int = Integer.parseInt(time_string);
+				end_time_int = time_int+115;
 				capacity_int = Integer.parseInt(capacity_string);
 				
+				
 				// Printing for testing purpose
-				System.out.println("Subject: " + course_string + ", course num: " + course_number_string + ", Course Title: " + course_title_string + ", Version: " + version_string + ", Section: " + section_int + ", Instructor Real Name: " + instructor_string + ", Days: " + days_string + ", Time: " + time_int + ", Capacity: " + capacity_int);
+				//System.out.println("Subject: " + course_string + ", course num: " + course_number_string + ", Course Title: " + course_title_string + ", Version: " + version_string + ", Section: " + section_int + ", Instructor Real Name: " + instructor_string + ", Days: " + days_string + ", Time: " + time_int + "-" + end_time_int + ", Capacity: " + capacity_int);
+				
+				//Create objects to create new sections
+				Course course = new Course(course_string, course_number_string, course_title_string);
+				Instructor inst = new Instructor(instructor_string);
+				Section section = new Section(course, section_string, days_string, time_string, inst, version_string, capacity_int);
+				schedule_list.add(section);
+			
+			}
+			//Print out data to test
+			for(Section s: schedule_list) {
+				System.out.println(s.getCourse().toString());
+				System.out.println(s.getInstructor().getInstructor());
+				System.out.println(s.toString());
 			}
 		}
 		catch(IOException e)

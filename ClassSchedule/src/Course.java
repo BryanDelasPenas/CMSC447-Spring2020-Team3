@@ -3,11 +3,11 @@ public class Course {
 	
 	//Variable Declarations for Course
 	private String subject;
-	private int courseNum;
+	private String courseNum;
 	private String courseTitle;
 	
 	//Overloaded Constructor
-	public Course(String sub, int num, String title){
+	public Course(String sub, String num, String title){
 		subject = sub;
 		courseNum = num;
 		courseTitle = title;
@@ -19,7 +19,7 @@ public class Course {
 	}
 	
 	//Getter for Course Number
-	public int getCourseNum() {
+	public String getCourseNum() {
 		return courseNum;
 	}
 	
@@ -31,7 +31,7 @@ public class Course {
 	//To String function for easier printing
 	@Override
 	public String toString() {
-		return subject + " " + Integer.toString(courseNum) + " " + courseTitle;
+		return subject + " " + courseNum + " " + courseTitle;
 		
 	}
 }

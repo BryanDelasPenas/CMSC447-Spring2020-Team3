@@ -16,7 +16,7 @@ CMSC,203,Discrete Structures,,3,"Yesha, Yaacov",tt10,40
 CMSC,203,Discrete Structures,,4,"Yesha, Yaacov",tt1130,40
 CMSC,203,Discrete Structures,,5,"Joeg, Prasanna",mw1,40
 CMSC,203,Discrete Structures,,6,"Joeg, Prasanna",mw230,40
-CMSC ,291,Continued Computer Science for Non-Majors,,1,Staff,mw10,30
+CMSC,291,Continued Computer Science for Non-Majors,,1,Staff,mw10,30
 CMSC,304,Social & Ethical Issues in IT,,1,Staff,tt530,40
 CMSC,304,Social & Ethical Issues in IT,,2,Staff,tt710,40
 CMSC,304,Social & Ethical Issues in IT,,3,Staff,mw530,40
@@ -71,7 +71,7 @@ CMSC,487/687,Network Security,,1,"Zieglar, Edward",tt710,50
 CMSC,491/691,Spec Topic: Malware,p,1,"Nicholas, Charles",mw530,50
 CMSC,491/691,Spec Topic: Computer Vision,h,1,"Chapman, David",tt4,50
 CMSC,491,Spec Topic: Data Science,c,1,"Dutt, Abhijit",mw4,40
-CMSC,493,Games Capstone,,1,staff,tt1,50
+CMSC,493,Games Capstone,,1,Staff,tt1,50
 CMSC,611,Computer Architecture,,1,"Liu, Chenchen",tt4,50
 CMSC,621,Operating Systems,,1,"Kalpakis, Kostas",tt1,50
 CMSC,641,Algorithms,,1,"Sherman, Alan",MWF10,50

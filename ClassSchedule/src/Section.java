@@ -68,4 +68,11 @@ public class Section {
 	public Room getRoom() {
 		return room;
 	}
+	
+	//To String function for easier printing
+	@Override
+	public String toString() {
+		return  course.toString() + " " + "Section: " + sectionNum + " " + day + " " + "Time: " + time + " " + instructor.toString() +" " + version + " "+ Integer.toString(capacity);
+		
+	}
 }
