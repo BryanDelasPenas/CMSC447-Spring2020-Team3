@@ -11,12 +11,7 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 @PlanningSolution
 public class SectionPlacement {
 
-	//Annotation for Optaplanner to select these rooms during runtime
-	@ProblemFactCollectionProperty
-	@ValueRangeProvider(id = "roomRange")
 	private List<Room> roomList;
-	//Annotate that OptaPlanner can change this during solving
-	@PlanningEntityCollectionProperty
 	private List<Section> sectionList;
 	
 	//Annotate to use this for the score
@@ -27,13 +22,15 @@ public class SectionPlacement {
 		this.roomList = rL;
 		this.sectionList = sL;
 	}
-	
-	//Getter for list of rooms
-	public List<Room> getRoomSlotList(){
+	//Annotation for Optaplanner to select these rooms during runtime
+	@ProblemFactCollectionProperty
+	@ValueRangeProvider(id = "roomRange")
+	public List<Room> getRoomList(){
 		return roomList;
 	}
 	
 	//Getter for the list of Sections
+	@ProblemFactCollectionProperty
 	public List<Section> getSectionList() {
 		return sectionList;
 	}
@@ -41,5 +38,10 @@ public class SectionPlacement {
 	//Getter for the Score
 	public HardSoftScore getScore() {
 		return score;
+	}
+	
+	//Setter for score
+	public void setScore(HardSoftScore score){
+		this.score = score;
 	}
 }
