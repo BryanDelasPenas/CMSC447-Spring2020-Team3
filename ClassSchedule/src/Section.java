@@ -1,7 +1,8 @@
-import org.optaplanner.core.api.domain.lookup.PlanningId;
+import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
 
 //Planning Entity for Section
+@PlanningEntity
 public class Section {
 	
 	//Variable Declarations
@@ -12,9 +13,6 @@ public class Section {
 	private String version;
 	private Instructor instructor;
 	private Course course;
-	
-	//Planning Variable
-	@PlanningVariable(valueRangeProviderRefs = "roomRange")
 	private Room room;
 	
 	//Overloaded Constructor
@@ -64,9 +62,15 @@ public class Section {
 		return course;
 	}
 	
-	//Getter for Section Room Information
+	//Planning Variable
+	@PlanningVariable(valueRangeProviderRefs = "roomRange")
 	public Room getRoom() {
 		return room;
+	}
+	
+	//Setter for room
+	public void setRoom(Room room){
+		this.room = room;
 	}
 	
 	//To String function for easier printing
