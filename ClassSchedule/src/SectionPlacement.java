@@ -13,11 +13,9 @@ public class SectionPlacement {
 
 	private List<Room> roomList;
 	private List<Section> sectionList;
-	
-	//Annotate to use this for the score
-	@PlanningScore
 	private HardSoftScore score;
 	
+	//Overload Constructor
 	public SectionPlacement(List<Room> rL, List<Section> sL){
 		this.roomList = rL;
 		this.sectionList = sL;
@@ -34,7 +32,8 @@ public class SectionPlacement {
 	public List<Section> getSectionList() {
 		return sectionList;
 	}
-	
+	//Annotate to use this for the score
+	@PlanningScore
 	//Getter for the Score
 	public HardSoftScore getScore() {
 		return score;
