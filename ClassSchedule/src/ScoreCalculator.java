@@ -6,19 +6,18 @@ import org.optaplanner.core.api.score.Score;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
 
-public abstract class ScoreCalculator 
-  implements EasyScoreCalculator<SectionPlacement> {
+public class ScoreCalculator implements EasyScoreCalculator<SectionPlacement> {
  
     @Override
     public Score calculateScore(SectionPlacement courseSchedule) {
         int hardScore = 0;
- 
+        int softScore = 0;
         Set<String> occupiedRooms = new HashSet<>();
         List<Section> sections = courseSchedule.getSectionList();
         for(Section section : sections) {
+        	if(section.getRoom() != null) {
             Room room = section.getRoom();
             String using = room.getClassroom() + " : " + section.getTime() + " : " + section.getDay(); // room, time, days
-
             // can't have class size > room capacity and 
             // can't be added to a room that is already in use
             if(occupiedRooms.contains(using) || section.getCapacity() > room.getCapacity()){
@@ -57,10 +56,14 @@ public abstract class ScoreCalculator
                 	hardScore -= 1;
                 }
                 // ITE not needed since it will be 0 score change, best/optimal location
+            	section.setRoom(room);
             }
+          } else {
+        	  hardScore += -1;
+          }
         }
  
         
-        return HardSoftScore.valueOf(hardScore, 0);
+        return HardSoftScore.valueOf(hardScore, softScore);
     }
 }

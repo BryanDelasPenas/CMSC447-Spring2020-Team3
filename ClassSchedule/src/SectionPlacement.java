@@ -15,20 +15,26 @@ public class SectionPlacement {
 	private List<Section> sectionList;
 	private HardSoftScore score;
 	
+	//No-Arg Constructor for Optaplanner
+	public SectionPlacement() {
+		roomList = new ArrayList<>();
+		sectionList = new ArrayList<>();
+	}
+	
 	//Overload Constructor
 	public SectionPlacement(List<Room> rL, List<Section> sL){
 		this.roomList = rL;
 		this.sectionList = sL;
 	}
 	//Annotation for Optaplanner to select these rooms during runtime
-	@ProblemFactCollectionProperty
 	@ValueRangeProvider(id = "roomRange")
+	@ProblemFactCollectionProperty
 	public List<Room> getRoomList(){
 		return roomList;
 	}
 	
 	//Getter for the list of Sections
-	@ProblemFactCollectionProperty
+	@PlanningEntityCollectionProperty
 	public List<Section> getSectionList() {
 		return sectionList;
 	}
@@ -43,4 +49,12 @@ public class SectionPlacement {
 	public void setScore(HardSoftScore score){
 		this.score = score;
 	}
+	
+	//@Override
+	//public String toString() {
+	//	for (Section s : sectionList) {
+	//		s.toString();
+	//	}
+	//}
+	
 }

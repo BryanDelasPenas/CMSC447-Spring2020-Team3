@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+  <!-- Define the model -->
+  <solutionClass>SectionPlacement</solutionClass>
+  <entityClass>Section</entityClass>
+
+  <!-- Define the score function -->
+  <scoreDirectorFactory>
+            <easyScoreCalculatorClass>ScoreCalculator</easyScoreCalculatorClass>
+  </scoreDirectorFactory>
+
+  <!-- Configure the optimization algorithms (optional) -->
+  <termination>
+  	<secondsSpentLimit>10</secondsSpentLimit>
+  </termination>
+</solver>

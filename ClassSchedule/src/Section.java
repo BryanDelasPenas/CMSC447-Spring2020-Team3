@@ -15,6 +15,10 @@ public class Section {
 	private Course course;
 	private Room room;
 	
+	//No-Arg Constructor for Optaplanner
+	public Section() {
+	}
+	
 	//Overloaded Constructor
 	public Section(Course course, String secNum, String day, String time, Instructor inst, String version, int cap){
 		this.course = course;
@@ -76,7 +80,7 @@ public class Section {
 	//To String function for easier printing
 	@Override
 	public String toString() {
-		return  course.toString() + " " + "Section: " + sectionNum + " " + day + " " + "Time: " + time + " " + instructor.toString() +" " + version + " "+ Integer.toString(capacity);
+		return  "Section: " + sectionNum + " Day: " + day + " Time: " + time + " Instructor: " + instructor.toString() + " Version: " + version + " Capacity: " + Integer.toString(capacity);
 		
 	}
 }

@@ -10,12 +10,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*; 
+import org.optaplanner.core.api.solver.Solver;
+import org.optaplanner.core.api.solver.SolverFactory;
+
 
 public class CourseScheduler {
 
 	public static void main(String[] args) 
 	{
-		
+		List<Room> room_list = new ArrayList<Room>();
+		List<Section> schedule_list = new ArrayList<Section>();
 		// Create a string for the file name 
 		String file_classroom = "src/CSV data files/Classroom.csv";
 
@@ -32,7 +36,6 @@ public class CourseScheduler {
 		try
 		{	
 			br_classroom = new BufferedReader(new FileReader(file_classroom));
-			List<Room> class_list = new ArrayList<Room>();
 			while ((line_classroom = br_classroom.readLine()) != null)
 			{
 				// This is made to skip the first cell, title cell.
@@ -52,9 +55,9 @@ public class CourseScheduler {
 	
 				// Prints out for testing purposes
 				//System.out.println("Classroom: " + data_classroom[0] + ", Capacity:" + cap);
-				class_list.add(new Room(data_classroom[0],cap));
+			room_list.add(new Room(data_classroom[0],cap));
 			}
-			for(Room r : class_list) {
+			for(Room r : room_list) {
 				System.out.println(r.toString());
 			}
 		}
@@ -91,7 +94,6 @@ public class CourseScheduler {
 			int end_time_int=0;
 			int capacity_int = 0;
 			br_schedule = new BufferedReader(new FileReader(file_schedule));
-			List<Section> schedule_list = new ArrayList<Section>();
 			while((line_schedule = br_schedule.readLine()) != null) 
 			{				
 				if(iteration_schedule == 0)
@@ -160,16 +162,33 @@ public class CourseScheduler {
 			
 			}
 			//Print out data to test
-			for(Section s: schedule_list) {
-				System.out.println(s.getCourse().toString());
-				System.out.println(s.getInstructor().getInstructor());
-				System.out.println(s.toString());
-			}
+			//for(Section s: schedule_list) {
+			//	System.out.println(s.toString());
+			//}
+			
 		}
 		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
-	
-	}	
-}
+		
+		//Create new SectionPlacement Entity for Optaplanner to Solve
+		SectionPlacement unsolved = new SectionPlacement(room_list, schedule_list);
+		//SolverFactory to use an xml to solve the problem
+		SolverFactory<SectionPlacement> solverFactory = SolverFactory.createFromXmlResource("sectionPlacementSolver.xml");
+		//Solver to build
+		Solver<SectionPlacement> solver = solverFactory.buildSolver();
+		//Solved Section Placement
+		SectionPlacement solved = solver.solve(unsolved);
+		
+		List<Section> temp = new ArrayList<Section>();
+		//Print out ClassRoom Placement
+		temp.addAll(solved.getSectionList());
+		for(Section s: temp) {
+			System.out.println(s.getCourse().toString());
+			System.out.print(s.toString());
+			System.out.print(" Room: " + s.getRoom().toString()+ '\n');
+		}
+		}
+		
+	}
