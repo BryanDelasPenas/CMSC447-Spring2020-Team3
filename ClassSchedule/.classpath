@@ -48,6 +48,7 @@
 	<classpathentry kind="lib" path="ref_lib/logback-classic-1.2.3.jar"/>
 	<classpathentry kind="lib" path="ref_lib/logback-core-1.2.3.jar"/>
 	<classpathentry kind="lib" path="ref_lib/mvel2-2.4.7.Final.jar"/>
+	<classpathentry kind="lib" path="ref_lib/opencsv-2.3.jar"/>
 	<classpathentry kind="lib" path="ref_lib/optaplanner-benchmark-7.34.0.Final.jar"/>
 	<classpathentry kind="lib" path="ref_lib/optaplanner-core-7.34.0.Final.jar"/>
 	<classpathentry kind="lib" path="ref_lib/optaplanner-persistence-common-7.34.0.Final.jar"/>
