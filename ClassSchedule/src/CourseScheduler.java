@@ -244,7 +244,8 @@ public class CourseScheduler {
 					String[] cell = {s.getCourse().getSubject(), s.getCourse().getCourseNum(), s.getCourse().getCourseTitle(), s.getSectionNum(), s.getDay(), s.getTime(), s.getInstructor().toString(), s.getVersion(), Integer.toString(s.getCapacity()), s.getRoom().getClassroom(), Integer.toString(s.getRoom().getCapacity())};
 					writer.writeNext(cell);
 				}
-				
+				flag_instructor = false; 
+				flag_classroom = false;
 				// Testing Purposes
 				// System.out.println(s.getCourse().toString() + s.toString() + " Room: " + s.getRoom().toString()+ '\n' );
 				// System.out.print(s.toString());
