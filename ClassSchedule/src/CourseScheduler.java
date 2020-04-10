@@ -3,7 +3,6 @@
 // Date:        04/06/2020
 // Description: This is the main class where optimization happens.
 //              Read in two excel files, fill in the data and optaplanner optimizes it
-// TODO:        Finish schedule.csv 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -195,57 +194,15 @@ public class CourseScheduler {
 			FileWriter output = new FileWriter(output_csv);
 			CSVWriter writer = new CSVWriter(output);
 			
-			// Created flags for when a comma is present 
-			boolean flag_instructor = false;
-			boolean flag_classroom = false;
-
 			// Write for the headers 
 			String [] header = {"Subject", "Course Number", "Course Title", "Course Section", "Day", "Time", "Instructor", "Version" , "Course Capacity", "Room", "Room Capacity"};
 			writer.writeNext(header);
 			
-			// Create temp varibles, use them if needed 
-			String temp_instructor = null;
-			String temp_classroom = null;
 			for(Section s:temp)
 			{
-				// Check if Instructor has a comma
-				if(s.getInstructor().toString().indexOf(',') != -1)
-				{
-					temp_instructor = "\"" + s.getInstructor().toString() + "\"";
-					flag_instructor = true;
-				}
-				// Check if the Classroom has a comma
-				if(s.getRoom().getClassroom().indexOf(',') != -1)
-				{
-					temp_classroom = "\"" + s.getRoom().getClassroom() + "\"";
-					flag_classroom = true;
-				}
-				// Both Instructor and Classroom has a comma
-				if(flag_instructor == true && flag_classroom == true)
-				{
-					String[] cell = {s.getCourse().getSubject(), s.getCourse().getCourseNum(), s.getCourse().getCourseTitle(), s.getSectionNum(), s.getDay(), s.getTime(), temp_instructor, s.getVersion(), Integer.toString(s.getCapacity()), temp_classroom, Integer.toString(s.getRoom().getCapacity())};
-					writer.writeNext(cell);
-				}
-				// Only Classroom has a comma
-				else if(flag_instructor == false && flag_classroom == true)
-				{
-					String[] cell = {s.getCourse().getSubject(), s.getCourse().getCourseNum(), s.getCourse().getCourseTitle(), s.getSectionNum(), s.getDay(), s.getTime(), s.getInstructor().toString(), s.getVersion(), Integer.toString(s.getCapacity()), temp_classroom, Integer.toString(s.getRoom().getCapacity())};
-					writer.writeNext(cell);
-				}
-				// Only Instructor has a comma 
-				else if(flag_instructor == true && flag_classroom == false)
-				{
-					String[] cell = {s.getCourse().getSubject(), s.getCourse().getCourseNum(), s.getCourse().getCourseTitle(), s.getSectionNum(), s.getDay(), s.getTime(), temp_instructor , s.getVersion(), Integer.toString(s.getCapacity()), s.getRoom().getClassroom(), Integer.toString(s.getRoom().getCapacity())};
-					writer.writeNext(cell);
-				}
-				// There is no commas in Instructor or Classroom 
-				else
-				{
-					String[] cell = {s.getCourse().getSubject(), s.getCourse().getCourseNum(), s.getCourse().getCourseTitle(), s.getSectionNum(), s.getDay(), s.getTime(), s.getInstructor().toString(), s.getVersion(), Integer.toString(s.getCapacity()), s.getRoom().getClassroom(), Integer.toString(s.getRoom().getCapacity())};
-					writer.writeNext(cell);
-				}
-				flag_instructor = false; 
-				flag_classroom = false;
+				
+				String[] cell = {s.getCourse().getSubject(), s.getCourse().getCourseNum(), s.getCourse().getCourseTitle(), s.getSectionNum(), s.getDay(), s.getTime(), s.getInstructor().toString(), s.getVersion(), Integer.toString(s.getCapacity()), s.getRoom().getClassroom(), Integer.toString(s.getRoom().getCapacity())};
+				writer.writeNext(cell);
 				// Testing Purposes
 				// System.out.println(s.getCourse().toString() + s.toString() + " Room: " + s.getRoom().toString()+ '\n' );
 				// System.out.print(s.toString());
