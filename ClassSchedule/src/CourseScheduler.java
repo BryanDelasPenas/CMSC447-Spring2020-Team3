@@ -4,8 +4,11 @@
 // Description: This is the main class where optimization happens.
 //              Read in two excel files, fill in the data and optaplanner optimizes it
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.nio.file.*; 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*; 
@@ -16,8 +19,8 @@ import java.io.FileNotFoundException;
 import au.com.bytecode.opencsv.CSVWriter;
 import java.io.FileWriter;
 
-public class CourseScheduler {
-
+public class CourseScheduler 
+{
 	public static void main(String[] args) 
 	{
 		List<Room> room_list = new ArrayList<Room>();
@@ -59,6 +62,7 @@ public class CourseScheduler {
 				//System.out.println("Classroom: " + data_classroom[0] + ", Capacity:" + cap);
 			room_list.add(new Room(data_classroom[0],cap));
 			}
+			br_classroom.close();
 			for(Room r : room_list) {
 				System.out.println(r.toString());
 			}
@@ -161,13 +165,12 @@ public class CourseScheduler {
 				Instructor inst = new Instructor(instructor_string);
 				Section section = new Section(course, section_string, days_string, time_string, inst, version_string, capacity_int);
 				schedule_list.add(section);
-			
 			}
+			br_schedule.close();
 			//Print out data to test
 			//for(Section s: schedule_list) {
 			//	System.out.println(s.toString());
-			//}
-			
+			//}			
 		}
 		catch(IOException e)
 		{
@@ -187,33 +190,102 @@ public class CourseScheduler {
 		//Print out ClassRoom Placement
 		temp.addAll(solved.getSectionList());
 		
-		// Create new file named output.csv
-		File output_csv = new File("src/CSV data files/output.csv");
+		// Create new file named temp.csv
+		File temp_csv = new File("src/CSV data files/temp.csv");
 		try
 		{
-			FileWriter output = new FileWriter(output_csv);
-			CSVWriter writer = new CSVWriter(output);
+			FileWriter temp_output = new FileWriter(temp_csv);
+			CSVWriter writer_temp = new CSVWriter(temp_output);
 			
 			// Write for the headers 
 			String [] header = {"Subject", "Course Number", "Course Title", "Course Section", "Day", "Time", "Instructor", "Version" , "Course Capacity", "Room", "Room Capacity"};
-			writer.writeNext(header);
+			writer_temp.writeNext(header);
 			
 			for(Section s:temp)
 			{
 				
 				String[] cell = {s.getCourse().getSubject(), s.getCourse().getCourseNum(), s.getCourse().getCourseTitle(), s.getSectionNum(), s.getDay(), s.getTime(), s.getInstructor().toString(), s.getVersion(), Integer.toString(s.getCapacity()), s.getRoom().getClassroom(), Integer.toString(s.getRoom().getCapacity())};
-				writer.writeNext(cell);
+				writer_temp.writeNext(cell);
 				// Testing Purposes
 				// System.out.println(s.getCourse().toString() + s.toString() + " Room: " + s.getRoom().toString()+ '\n' );
 				// System.out.print(s.toString());
 				// System.out.print(" Room: " + s.getRoom().toString()+ '\n');
 			}	
-			writer.close();
+			writer_temp.close();
 		}
 		catch(IOException e)
 		{
 			e.printStackTrace();;
 		}
+		String file_temp = "src/CSV data files/temp.csv";
+		String file_output = "src/CSV data files/output.csv";
+		// Set the buffered reader, 
+		BufferedReader br_temp = null; 
+		
+		// Create a empty string
+		String line_temp = ""; 
+		
+		try
+		{	
+			BufferedWriter writer = null;
+			writer = new BufferedWriter(new FileWriter(file_output));
+			int iteration_output = 0;
+			// Write for the headers 
+			String [] header = {"Subject", "Course Number", "Course Title", "Course Section", "Day", "Time", "Instructor", "Version" , "Course Capacity", "Room", "Room Capacity"};
+			for(String head:header)
+			{
+				head = head.replaceAll("^\"|\"$", "");
+			}
+		
+			writer.write(String.join(",", header));
+			writer.newLine();
+			
+			br_temp = new BufferedReader(new FileReader(file_temp));
+			while ((line_temp = br_temp.readLine()) != null)
+			{
+				// This is made to skip the first cell, title cell.
+				if(iteration_output == 0)
+				{
+					iteration_output++;
+					continue;
+				}
+				
+				// This keeps the commas inside of the quotes
+				String[] data_temp = line_temp.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+				
+				// Removes the starting quotes when necessary only 6 and 9 
+				data_temp[0] = data_temp[0].replaceAll("^\"|\"$", "");
+				data_temp[1] = data_temp[1].replaceAll("^\"|\"$", "");
+				data_temp[2] = data_temp[2].replaceAll("^\"|\"$", "");
+				data_temp[3] = data_temp[3].replaceAll("^\"|\"$", "");
+				data_temp[4] = data_temp[4].replaceAll("^\"|\"$", "");
+				data_temp[5] = data_temp[5].replaceAll("^\"|\"$", "");
+				//
+				if(data_temp[6].indexOf(',') == -1)
+				{
+					data_temp[6] = data_temp[6].replaceAll("^\"|\"$", "");
+				}
+				data_temp[7] = data_temp[7].replaceAll("^\"|\"$", "");
+				//
+				data_temp[8] = data_temp[8].replaceAll("^\"|\"$", "");
+				if(data_temp[9].indexOf(',') == -1)
+				{
+					data_temp[9] = data_temp[9].replaceAll("^\"|\"$", "");
+				}
+				data_temp[10] = data_temp[10].replaceAll("^\"|\"$", "");
+				writer.write(String.join(",", data_temp));
+				writer.newLine();
+			}
+			br_temp.close();
+			writer.close();
+			temp_csv.delete();
+			
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	
 	}	
 		
 }
