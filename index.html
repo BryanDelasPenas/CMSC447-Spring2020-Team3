@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Course Scheduler for UMBC</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body">
+	<tr>
+		<td>
+			<img src="bannerFinal.png", width="100%">
+		</td>	
+	</tr>
+	<h1>
+		<div align="center">
+			<p style="font-family:Arial">
+				<font color="black" size="6">Upload Your CSV Files</font>
+			</p>
+		</div>
+	</h1>
+	<div align="center">
+		<form method="post" enctype="multipart/form-data">
+			<input type="file" style="color:black" accept=".csv" name="files[]" multiple />
+			<input type="submit" value="Upload .csv Files" name="submit" />
+		</form>
+	</div>
+
+	<script src="upload.js"></script>
+	
+	<h1>
+		<div align="center">
+			<p style="font-family:Arial">
+				<font color="black" size="6">Output File</font>
+			</p>
+		</div>
+	</h1>
+
+	<div class="container",>
+		<div class="table-responsive">
+			<br />
+				<div align="center">
+					<button type="button" name="load_data" id="load_data" class="btn btn-info">Show Optimized Schedule</button>
+				</div>
+			<br />
+			<div id="UMBC_table"></div>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+$(document).ready(function(){
+	$('#load_data').click(function(){
+		$.ajax({
+			url:"outputFinal.csv",
+			dataType:"text",
+			success:function(data)
+			{
+				var umbcData = data.split(/\r?\n|\r/);
+				var tableData = '<table class="table table-bordered table-striped">';
+				for(var count = 0; count < umbcData.length; count++)
+				{
+					var cellData = umbcData[count].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+					
+					tableData += '<tr>';
+					for(var cellCount = 0; cellCount < cellData.length; cellCount++)
+					{
+						if(count === 0) 
+						{
+							tableData += '<th>' + cellData[cellCount] + '</th>';
+						}
+						else
+						{
+							tableData += '<td>' + cellData[cellCount] + '</td>';
+						}
+					}
+					tableData += '</tr>';
+				}
+				tableData += '</table>';
+				$('#UMBC_table').html(tableData);
+			}
+		});
+	});
+});
+</script> 
