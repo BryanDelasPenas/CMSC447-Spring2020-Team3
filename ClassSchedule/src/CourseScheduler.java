@@ -23,6 +23,66 @@ public class CourseScheduler
 {
 	public static void main(String[] args) 
 	{
+		
+		// Create a string for the file name 
+		String file_distance = "src/CSV data files/Distance_from_ITE.csv";
+		// Set the buffered reader, 
+		BufferedReader br_rooms = null; 
+		// Create a empty string
+		String line_rooms = ""; 
+		// Create a count var to skip the first line 
+		int iteration_rooms = 0;		
+		 // to hold all of the rooms and rankings
+		List<Room> room_rankings = new ArrayList<Room>(); 
+		//Block to import room distance information
+		try
+		{	
+			br_rooms = new BufferedReader(new FileReader(file_distance));
+			while ((line_rooms = br_rooms.readLine()) != null)
+			{
+				// This is made to skip the first cell, title cell.
+				if(iteration_rooms == 0)
+				{
+					iteration_rooms++;
+					continue;
+				}
+				// This keeps the commas inside of the quotes
+				String[] data_room = line_rooms.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);				
+				// Removes the starting quotes when necessary 
+				String name = data_room[0].replaceAll("^\"|\"$", "");				
+				double distance = Double.parseDouble(data_room[1]);
+				// add the room to list which will be used for rankings
+				room_rankings.add(new Room(name, distance));
+			}
+			br_rooms.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		// sort the rooms based on distance away
+		int size = room_rankings.size();  
+		Room tempRoom;
+		for(int i=0; i < size; i++){  
+			for(int j=1; j < (size-i); j++) {
+				if(room_rankings.get(j-1).getDistance() > room_rankings.get(j).getDistance()){  
+					tempRoom = room_rankings.get(j-1);
+					room_rankings.set(j-1, room_rankings.get(j));
+					room_rankings.set(j, tempRoom);
+				}
+			}  
+		}
+		// give each room a rank, the further away the higher the rank
+		int rank = 0;
+		for (int i = 0; i < room_rankings.size(); i++) {
+			tempRoom = room_rankings.get(i);
+			tempRoom.setRank(rank);
+			rank++;
+			System.out.println(rank);
+			room_rankings.set(i, tempRoom);
+		}
+		
 		List<Room> room_list = new ArrayList<Room>();
 		List<Section> schedule_list = new ArrayList<Section>();
 		// Create a string for the file name 
@@ -60,7 +120,9 @@ public class CourseScheduler
 	
 				// Prints out for testing purposes
 				//System.out.println("Classroom: " + data_classroom[0] + ", Capacity:" + cap);
-			room_list.add(new Room(data_classroom[0],cap));
+				Room thisRoom = makeRoom(data_classroom[0], cap, room_rankings);
+				room_list.add(thisRoom);
+			//room_list.add(new Room(data_classroom[0],cap));
 			}
 			br_classroom.close();
 			for(Room r : room_list) {
@@ -287,5 +349,18 @@ public class CourseScheduler
 		}
 	
 	}	
+	
+	public static Room makeRoom(String name, int capacity, List<Room> rooms) {
+		Room room = new Room(name, capacity);
+		for (Room thisRoom : rooms) {
+			if (name.equals(thisRoom.getClassroom())) {
+				room.setRank(thisRoom.getRank());
+				return room;
+			}
+		}
+		// if not in the list
+		room.setRank(0);
+		return room;
+	}
 		
 }
