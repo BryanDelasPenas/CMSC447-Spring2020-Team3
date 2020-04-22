@@ -36,7 +36,7 @@ public class CourseScheduler
 		List<Room> room_rankings = new ArrayList<Room>(); 
 		//Block to import room distance information
 		try
-		{	
+		{
 			br_rooms = new BufferedReader(new FileReader(file_distance));
 			while ((line_rooms = br_rooms.readLine()) != null)
 			{
@@ -48,9 +48,28 @@ public class CourseScheduler
 				}
 				// This keeps the commas inside of the quotes
 				String[] data_room = line_rooms.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);				
+				if (data_room.length != 2) {
+					// check to make sure the file has the right number of coulmns, and will also test to be
+					// sure comma delimited, since if not comma delimited there will not be enough columns per line
+					if (data_room.length > 2) { 
+						System.out.println("Too many columns have been given in the Distance to ITE File, check to make sure there are only 2 columns, ending program");
+						return;
+					}
+					else {
+						System.out.println("Too many few have been given in the Distance to ITE File, check to make sure there are only 2 columns, ending program");
+						return;
+					}
+				}
 				// Removes the starting quotes when necessary 
 				String name = data_room[0].replaceAll("^\"|\"$", "");				
-				double distance = Double.parseDouble(data_room[1]);
+				double distance;
+				try {
+					distance = Double.parseDouble(data_room[1]);
+				}
+				catch (Exception e){
+					System.out.println("Distance from ITE must be represented as a numeric value (decimal or whole numbers), ending program");
+					return;
+				}
 				// add the room to list which will be used for rankings
 				room_rankings.add(new Room(name, distance));
 			}
@@ -58,7 +77,10 @@ public class CourseScheduler
 		}
 		catch(IOException e)
 		{
-			e.printStackTrace();
+			System.out.println("Distance to ITE file not found, ending program");
+			// add in for development
+			// e.printStackTrace();
+			return;
 		}
 		
 		// sort the rooms based on distance away
@@ -75,11 +97,17 @@ public class CourseScheduler
 		}
 		// give each room a rank, the further away the higher the rank
 		int rank = 0;
+		double distanceBefore = -1;
 		for (int i = 0; i < room_rankings.size(); i++) {
 			tempRoom = room_rankings.get(i);
+			// check to make sure not same distance, since rank would be the same
+			if (i > 0) {
+				if (distanceBefore != tempRoom.getDistance()) {
+					rank++;
+				}
+			}
 			tempRoom.setRank(rank);
-			rank++;
-			System.out.println(rank);
+			distanceBefore = tempRoom.getDistance();
 			room_rankings.set(i, tempRoom);
 		}
 		
