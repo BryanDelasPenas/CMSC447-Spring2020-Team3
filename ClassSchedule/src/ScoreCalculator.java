@@ -21,7 +21,7 @@ public class ScoreCalculator implements EasyScoreCalculator<SectionPlacement> {
 	            // can't have class size > room capacity and 
 	            // can't be added to a room that is already in use
 	            if(occupiedRooms.contains(using) || section.getCapacity() > room.getCapacity()){
-	                hardScore -= 1; //25 
+	                hardScore -= 1;
 	            }
 	            else {
 	            	// can add since these constraints are not violated
