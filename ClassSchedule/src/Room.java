@@ -1,3 +1,5 @@
+import java.util.List;
+
 //POJO for each room
 public class Room {
 	
@@ -44,6 +46,19 @@ public class Room {
 	//Getter for Classroom Name
 	public String getClassroom() {
 		return classroom;
+	}
+	
+	public static Room makeRoom(String name, int capacity, List<Room> rooms) {
+		Room room = new Room(name, capacity);
+		for (Room thisRoom : rooms) {
+			if (name.equals(thisRoom.getClassroom())) {
+				room.setRank(thisRoom.getRank());
+				return room;
+			}
+		}
+		// if not in the list
+		room.setRank(0);
+		return room;
 	}
 	
 	//To String function for ease of printing

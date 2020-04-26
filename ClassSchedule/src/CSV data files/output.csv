@@ -1,6 +1,6 @@
 Subject,Course Number,Course Title,Course Section,Day,Time,Instructor,Version,Course Capacity,Room,Room Capacity
-CMSC,104,Problem Solving & Prog.,1,TuTh,530,Staff,,40,Math & Psychology 106,40
-CMSC,104,Problem Solving & Prog.,2,MoWe,530,Staff,,40,Sherman Hall 013,40
+CMSC,104,Problem Solving & Prog.,1,TuTh,530,Staff,,40,Sherman Hall 013,40
+CMSC,104,Problem Solving & Prog.,2,MoWe,530,Staff,,40,Math & Psychology 106,40
 CMSC,201ss,Computer Science I,1,MoWe,230,Staff,,60,Information Technology 227,60
 CMSC,201,Computer Science I,1,MoWe,1,"Hamilton, Eric",,120,Public Policy 105,120
 CMSC,201,Computer Science I,2,TuTh,1130,"Johnson, Benjamin",,100,"Engineering 122, Engineering 122A",100
@@ -11,72 +11,72 @@ CMSC,202,Computer Science II,3,TuTh,230,"Donyaee, Kash",,100,"Engineering 122, E
 CMSC,202,Computer Science II,4,TuTh,4,"Donyaee, Kash",,100,"Engineering 122, Engineering 122A",100
 CMSC,202,Computer Science II,5,MoWe,1,"Dixon, Jeremy",,100,"Engineering 122, Engineering 122A",100
 CMSC,203,Discrete Structures,1,TuTh,530,"Wilson, Marcella",,80,"Engineering 122, Engineering 122A",100
-CMSC,203,Discrete Structures,2,MoWe,530,"Hamilton, Eric",,40,Interdisciplinary Life S 233,40
+CMSC,203,Discrete Structures,2,MoWe,530,"Hamilton, Eric",,40,Information Technology 227,60
 CMSC,203,Discrete Structures,3,TuTh,10,"Yesha, Yaacov",,40,Math & Psychology 106,40
-CMSC,203,Discrete Structures,4,TuTh,1130,"Yesha, Yaacov",,40,Math & Psychology 106,40
-CMSC,203,Discrete Structures,5,MoWe,1,"Joeg, Prasanna",,40,Sherman Hall 014,50
-CMSC,203,Discrete Structures,6,MoWe,230,"Joeg, Prasanna",,40,Janet & Walter Sondheim 109,50
+CMSC,203,Discrete Structures,4,TuTh,1130,"Yesha, Yaacov",,40,Information Technology 227,60
+CMSC,203,Discrete Structures,5,MoWe,1,"Joeg, Prasanna",,40,Interdisciplinary Life S 233,40
+CMSC,203,Discrete Structures,6,MoWe,230,"Joeg, Prasanna",,40,Math & Psychology 106,40
 CMSC,291,Continued Computer Science for Non-Majors,1,MoWe,10,Staff,,30,Sherman Hall 151,30
-CMSC,304,Social & Ethical Issues in IT,1,TuTh,530,Staff,,40,Information Technology 227,60
+CMSC,304,Social & Ethical Issues in IT,1,TuTh,530,Staff,,40,Math & Psychology 106,40
 CMSC,304,Social & Ethical Issues in IT,2,TuTh,710,Staff,,40,Sherman Hall 013,40
-CMSC,304,Social & Ethical Issues in IT,3,MoWe,530,Staff,,40,Math & Psychology 106,40
-CMSC,304,Social & Ethical Issues in IT,4,MoWe,710,Staff,,40,Information Technology 227,60
-CMSC,304,Social & Ethical Issues in IT,5,TuTh,530,Staff,,40,Sherman Hall 013,40
-CMSC,304,Social & Ethical Issues in IT,6,MoWe,530,Staff,,40,Information Technology 227,60
-CMSC,313,Comp. Org. & Assembly Lang.,1,TuTh,1130,"Sekyonda, Ivan",,40,Janet & Walter Sondheim 109,50
-CMSC,313,Comp. Org. & Assembly Lang.,2,TuTh,4,"Sekyonda, Ivan",,40,Sherman Hall 013,40
-CMSC,313,Comp. Org. & Assembly Lang.,3,MoWe,1,"Kartchner, Jeannette",,40,Sherman Hall 013,40
-CMSC,313,Comp. Org. & Assembly Lang.,4,MoWe,230,"Sekyonda, Ivan",,40,Sherman Hall 013,40
-CMSC,331,Programming Languages,1,TuTh,10,"Donyaee, Kash",,40,Sherman Hall 014,50
+CMSC,304,Social & Ethical Issues in IT,3,MoWe,530,Staff,,40,Biological Sciences 120,40
+CMSC,304,Social & Ethical Issues in IT,4,MoWe,710,Staff,,40,Sherman Hall 013,40
+CMSC,304,Social & Ethical Issues in IT,5,TuTh,530,Staff,,40,Biological Sciences 120,40
+CMSC,304,Social & Ethical Issues in IT,6,MoWe,530,Staff,,40,Janet & Walter Sondheim 109,50
+CMSC,313,Comp. Org. & Assembly Lang.,1,TuTh,1130,"Sekyonda, Ivan",,40,Math & Psychology 106,40
+CMSC,313,Comp. Org. & Assembly Lang.,2,TuTh,4,"Sekyonda, Ivan",,40,Biological Sciences 120,40
+CMSC,313,Comp. Org. & Assembly Lang.,3,MoWe,1,"Kartchner, Jeannette",,40,Janet & Walter Sondheim 109,50
+CMSC,313,Comp. Org. & Assembly Lang.,4,MoWe,230,"Sekyonda, Ivan",,40,"Engineering 122, Engineering 122A",100
+CMSC,331,Programming Languages,1,TuTh,10,"Donyaee, Kash",,40,Sherman Hall 013,40
 CMSC,331,Programming Languages,2,TuTh,1,"Vafaei, Fereydoon",,40,Math & Psychology 106,40
-CMSC,331,Programming Languages,3,MoWe,1,"Donyaee, Kash",,40,Biological Sciences 120,40
+CMSC,331,Programming Languages,3,MoWe,1,"Donyaee, Kash",,40,Sherman Hall 013,40
 CMSC,331,Programming Languages,4,TuTh,4,"Vafaei, Fereydoon",,40,Math & Psychology 106,40
 CMSC,341,Data Structures,1,MoWe,10,"Marron, Christopher",,40,Sherman Hall 013,40
 CMSC,341,Data Structures,2,TuTh,1,"Wilson, Marcella",,40,Janet & Walter Sondheim 109,50
-CMSC,341,Data Structures,3,TuTh,230,"Wilson, Marcella",,40,Sherman Hall 013,40
-CMSC,341,Data Structures,4,MoWe,1,"Johnson, Benjamin",,40,Math & Psychology 106,40
-CMSC,341,Data Structures,5,MoWe,230,"Bargteil, Adam",,40,Math & Psychology 106,40
-CMSC,341,Data Structures,6,MoWe,4,"Johnson, Benjamin",,40,Meyerhoff Chemistry 030,50
-CMSC,411ce,Computer Architecture,1,TuTh,230,"Squire, Jon",,40,Janet & Walter Sondheim 109,50
-CMSC,411cs,Computer Architecture,1,MoWe,1,"Sekyonda, Ivan",,40,Interdisciplinary Life S 233,40
-CMSC,411cs,Computer Architecture,2,MoWe,230,"Olano, Marc",,40,Meyerhoff Chemistry 030,50
+CMSC,341,Data Structures,3,TuTh,230,"Wilson, Marcella",,40,Math & Psychology 106,40
+CMSC,341,Data Structures,4,MoWe,1,"Johnson, Benjamin",,40,Biological Sciences 120,40
+CMSC,341,Data Structures,5,MoWe,230,"Bargteil, Adam",,40,Janet & Walter Sondheim 109,50
+CMSC,341,Data Structures,6,MoWe,4,"Johnson, Benjamin",,40,Sherman Hall 013,40
+CMSC,411ce,Computer Architecture,1,TuTh,230,"Squire, Jon",,40,Sherman Hall 014,50
+CMSC,411cs,Computer Architecture,1,MoWe,1,"Sekyonda, Ivan",,40,Math & Psychology 106,40
+CMSC,411cs,Computer Architecture,2,MoWe,230,"Olano, Marc",,40,Biological Sciences 120,40
 CMSC,411cs,Computer Architecture,3,TuTh,530,Staff,,40,Sherman Hall 014,50
-CMSC,421,Operating Systems,1,TuTh,1130,Staff,,40,Information Technology 227,60
-CMSC,421,Operating Systems,2,TuTh,230,"Perkins, Dmitri",,40,Math & Psychology 106,40
-CMSC,421,Operating Systems,3,MoWe,530,Staff,,40,Janet & Walter Sondheim 109,50
-CMSC,426,Computer Security,1,TuTh,1,Staff,,40,Meyerhoff Chemistry 030,50
-CMSC,426,Computer Security,3,TuTh,4,Staff,,40,Interdisciplinary Life S 233,40
-CMSC,435/634,Computer Graphics,1,MoWe,1,"Olano, Marc",,50,Meyerhoff Chemistry 030,50
+CMSC,421,Operating Systems,1,TuTh,1130,Staff,,40,Sherman Hall 013,40
+CMSC,421,Operating Systems,2,TuTh,230,"Perkins, Dmitri",,40,Sherman Hall 013,40
+CMSC,421,Operating Systems,3,MoWe,530,Staff,,40,Sherman Hall 013,40
+CMSC,426,Computer Security,1,TuTh,1,Staff,,40,"Engineering 122, Engineering 122A",100
+CMSC,426,Computer Security,3,TuTh,4,Staff,,40,Sherman Hall 013,40
+CMSC,435/634,Computer Graphics,1,MoWe,1,"Olano, Marc",,50,Sherman Hall 014,50
 CMSC,441,Algorithms,1,TuTh,1,"Chang, Richard",,40,Sherman Hall 013,40
-CMSC,441,Algorithms,2,TuTh,10,"Chang, Richard",,40,Sherman Hall 013,40
+CMSC,441,Algorithms,2,TuTh,10,"Chang, Richard",,40,Information Technology 227,60
 CMSC,441,Algorithms,3,MoWe,10,"Marron, Christopher",,40,Information Technology 227,60
-CMSC,443/652,Cryptography and Data Security,1,TuTh,10,"Zhang, Haibin",,50,Information Technology 227,60
+CMSC,443/652,Cryptography and Data Security,1,TuTh,10,"Zhang, Haibin",,50,Sherman Hall 014,50
 CMSC,447,Software Engineering I,1,MoWe,1,"Dutt, Abhijit",,30,Sherman Hall 151,30
 CMSC,447,Software Engineering I,2,MoWe,230,"Dutt, Abhijit",,30,Sherman Hall 151,30
 CMSC,447,Software Engineering I,3,TuTh,530,Staff,,30,Sherman Hall 151,30
 CMSC,447,Software Engineering I,4,TuTh,710,Staff,,30,Sherman Hall 151,30
-CMSC,455,Numerical Computations,2,MoWe,4,"Squire, Jon",,40,Sherman Hall 013,40
-CMSC,461,Databases,1,TuTh,1130,"Kalpakis, Kostas",,40,Sherman Hall 013,40
+CMSC,455,Numerical Computations,2,MoWe,4,"Squire, Jon",,40,Math & Psychology 106,40
+CMSC,461,Databases,1,TuTh,1130,"Kalpakis, Kostas",,40,Sherman Hall 014,50
 CMSC,461,Databases,2,MoWe,230,Staff,,40,Sherman Hall 014,50
-CMSC,471,Artificial Intelligence,1,MoWe,4,"Vafaei, Fereydoon",,50,Sherman Hall 014,50
-CMSC,471,Artificial Intelligence,2,TuTh,4,"Finin, Tim",,50,Information Technology 227,60
+CMSC,471,Artificial Intelligence,1,MoWe,4,"Vafaei, Fereydoon",,50,Janet & Walter Sondheim 109,50
+CMSC,471,Artificial Intelligence,2,TuTh,4,"Finin, Tim",,50,Janet & Walter Sondheim 109,50
 CMSC,471,Artificial Intelligence,3,MoWe,530,Staff,,50,Meyerhoff Chemistry 030,50
 CMSC,476/676,Information Retrieval,1,MoWe,1,"Pearce, Claudia",,50,Information Technology 227,60
-CMSC,478,Machine Learning,1,TuTh,1130,"Vafaei, Fereydoon",,50,Sherman Hall 014,50
+CMSC,478,Machine Learning,1,TuTh,1130,"Vafaei, Fereydoon",,50,Janet & Walter Sondheim 109,50
 CMSC,479/679,Introduction to Robotics,1,TuTh,230,"Matuszek, Cynthia",,50,Information Technology 227,60
-CMSC,481,Computer Networks,1,TuTh,4,"Sidhu, Deepinder",,50,Janet & Walter Sondheim 109,50
+CMSC,481,Computer Networks,1,TuTh,4,"Sidhu, Deepinder",,50,Information Technology 227,60
 CMSC,691,Spec Topic: Quantum Security ,1,TuTh,710,"Sidhu, Deepinder",,50,Sherman Hall 014,50
-CMSC,483/691,Parallel & Distr. Processing,1,TuTh,530,"Simon, Tyler",,50,Meyerhoff Chemistry 030,50
+CMSC,483/691,Parallel & Distr. Processing,1,TuTh,530,"Simon, Tyler",,50,Janet & Walter Sondheim 109,50
 CMSC,487/687,Network Security,1,TuTh,710,"Zieglar, Edward",,50,Information Technology 227,60
 CMSC,491/691,Spec Topic: Malware,1,MoWe,530,"Nicholas, Charles",p,50,Sherman Hall 014,50
-CMSC,491/691,Spec Topic: Computer Vision,1,TuTh,4,"Chapman, David",h,50,Meyerhoff Chemistry 030,50
-CMSC,491,Spec Topic: Data Science,1,MoWe,4,"Dutt, Abhijit",c,40,Janet & Walter Sondheim 109,50
-CMSC,493,Games Capstone,1,TuTh,1,Staff,,50,Information Technology 227,60
-CMSC,611,Computer Architecture,1,TuTh,4,"Liu, Chenchen",,50,Sherman Hall 014,50
-CMSC,621,Operating Systems,1,TuTh,1,"Kalpakis, Kostas",,50,Sherman Hall 014,50
+CMSC,491/691,Spec Topic: Computer Vision,1,TuTh,4,"Chapman, David",h,50,Sherman Hall 014,50
+CMSC,491,Spec Topic: Data Science,1,MoWe,4,"Dutt, Abhijit",c,40,Sherman Hall 014,50
+CMSC,493,Games Capstone,1,TuTh,1,Staff,,50,Sherman Hall 014,50
+CMSC,611,Computer Architecture,1,TuTh,4,"Liu, Chenchen",,50,Meyerhoff Chemistry 030,50
+CMSC,621,Operating Systems,1,TuTh,1,"Kalpakis, Kostas",,50,Information Technology 227,60
 CMSC,641,Algorithms,1,MoWeFr,10,"Sherman, Alan",,50,Information Technology 227,60
-CMSC,678,Machine Learning,1,TuTh,230,"Oates, Tim",,50,Sherman Hall 014,50
-CMSC,682,Network Technologies,1,TuTh,530,"Sidhu, Deepinder",,50,Janet & Walter Sondheim 109,50
-CMSC,684,Wireless Sensor Networks,1,MoWe,230,"Younis, Mohamed",,40,Interdisciplinary Life S 233,40
+CMSC,678,Machine Learning,1,TuTh,230,"Oates, Tim",,50,Janet & Walter Sondheim 109,50
+CMSC,682,Network Technologies,1,TuTh,530,"Sidhu, Deepinder",,50,Information Technology 227,60
+CMSC,684,Wireless Sensor Networks,1,MoWe,230,"Younis, Mohamed",,40,Sherman Hall 013,40
 CMSC,691,Spec Topic: Graphical and Statistical Models of Learning,1,MoWe,4,"Ferraro, Frank",a,50,Information Technology 227,60
-CMSC,491/691,Spec Topic: Data Driven Design of Autonmous Systems,1,MoWe,1,"Zhu, Ting",h,50,Janet & Walter Sondheim 109,50
+CMSC,491/691,Spec Topic: Data Driven Design of Autonmous Systems,1,MoWe,1,"Zhu, Ting",h,50,Meyerhoff Chemistry 030,50
