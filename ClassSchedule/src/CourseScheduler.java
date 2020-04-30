@@ -19,10 +19,12 @@ public class CourseScheduler
 		ec.checkCourseName(test);
 		String capTest = "40";
 		ec.checkCourseCap(capTest);
-		String iName = "Sekyonda, Ivan";
+		String iName = "Sekyonda, Ivan 3";
 		ec.checkInstructor(iName);
-		String cNum = "104";
+		String cNum = "100";
 		ec.checkCourseNum(cNum);
+		String cTime = "mw5";
+		ec.checkCourseTime(cTime);
 		//Create new SectionPlacement Entity for Optaplanner to Solve
 		//SectionPlacement unsolved = createData.createSections();
 		//SolverFactory to use an xml to solve the problem
