@@ -36,7 +36,7 @@ public class CSVBuilder {
 				// This keeps the commas inside of the quotes
 				String[] data_room = line_rooms.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);				
 				// Removes the starting quotes when necessary 
-				String name = data_room[0].replaceAll("^\"|\"$", "");				
+				String name = data_room[0].replaceAll("^\"|\"$", "");
 				double distance = Double.parseDouble(data_room[1]);
 				// add the room to list which will be used for rankings
 				room_rankings.add(new Room(name, distance));
@@ -64,12 +64,14 @@ public class CSVBuilder {
 		int rank = 0;
 		for (int i = 0; i < room_rankings.size(); i++) {
 			tempRoom = room_rankings.get(i);
+			System.out.println(tempRoom.toString());
 			tempRoom.setRank(rank);
 			rank++;
-			System.out.println(rank);
+			//System.out.println(rank);
 			room_rankings.set(i, tempRoom);
 		}
 		return room_rankings;
+
 	}
 	
 	public SectionPlacement createSections(){
@@ -77,6 +79,8 @@ public class CSVBuilder {
 		List<Room> room_rankings = dataCreate.createRooms();
 		List<Room> room_list = new ArrayList<Room>();
 		List<Section> schedule_list = new ArrayList<Section>();
+		//Instantiate Error Checking Class
+		ErrorCheck ec = new ErrorCheck();
 		// Create a string for the file name 
 		String file_classroom = "src/CSV data files/Classroom.csv";
 
@@ -109,17 +113,20 @@ public class CSVBuilder {
 				
 				// Changes data_classroom[1](capacity) into an int
 				int cap = Integer.parseInt(data_classroom[1]);
-	
-				// Prints out for testing purposes
-				//System.out.println("Classroom: " + data_classroom[0] + ", Capacity:" + cap);
+				
 				Room thisRoom = null;
 				thisRoom = Room.makeRoom(data_classroom[0], cap, room_rankings);
 				room_list.add(thisRoom);
-			//room_list.add(new Room(data_classroom[0],cap));
 			}
 			br_classroom.close();
+			
+			//Loop to fix rankings
 			for(Room r : room_list) {
-				System.out.println(r.toString());
+				for(Room t: room_rankings) {
+					if(r.getClassroom().contains(t.getClassroom())) {
+						r.setRank(t.getRank());
+					}
+				}
 			}
 		}
 		catch(IOException e)
@@ -177,6 +184,14 @@ public class CSVBuilder {
 				section_string = data_schedule[4];
 				instructor_string = data_schedule[5];
 						 
+				//Check if data in csv is in acceptable format
+				ec.checkCourseNum(course_number_string);
+				ec.checkCourseName(course_title_string);
+				ec.checkInstructor(instructor_string);
+				
+				//Check the time before parsing to make readable
+				ec.checkCourseTime(data_schedule[6]);
+				
 				// Gets the second element from string, example, tt530.charAt(3) = 5
 				char second_element_time = data_schedule[6].charAt(2); 
 				char first_element = data_schedule[6].charAt(0);
@@ -203,7 +218,8 @@ public class CSVBuilder {
 					time_string = data_schedule[6].substring(2,data_schedule[6].length());
 				}
 				capacity_string = data_schedule[7];
-				
+				//Check if the course capacity is valid
+				ec.checkCap(capacity_string);
 				// Convert the necessary strings to int
 				//course_number_int = Integer.parseInt(course_number_string);
 				section_int = Integer.parseInt(section_string);
@@ -222,10 +238,7 @@ public class CSVBuilder {
 				schedule_list.add(section);
 			}
 			br_schedule.close();
-			//Print out data to test
-			//for(Section s: schedule_list) {
-			//	System.out.println(s.toString());
-			//}			
+					
 		}
 		catch(IOException e)
 		{
@@ -253,10 +266,6 @@ public class CSVBuilder {
 				
 				String[] cell = {s.getCourse().getSubject(), s.getCourse().getCourseNum(), s.getCourse().getCourseTitle(), s.getSectionNum(), s.getDay(), s.getTime(), s.getInstructor().toString(), s.getVersion(), Integer.toString(s.getCapacity()), s.getRoom().getClassroom(), Integer.toString(s.getRoom().getCapacity())};
 				writer_temp.writeNext(cell);
-				// Testing Purposes
-				// System.out.println(s.getCourse().toString() + s.toString() + " Room: " + s.getRoom().toString()+ '\n' );
-				// System.out.print(s.toString());
-				// System.out.print(" Room: " + s.getRoom().toString()+ '\n');
 			}	
 			writer_temp.close();
 		}

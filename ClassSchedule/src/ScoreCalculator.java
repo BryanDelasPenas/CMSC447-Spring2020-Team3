@@ -29,7 +29,6 @@ public class ScoreCalculator implements EasyScoreCalculator<SectionPlacement> {
 	                double sectionCapacity = section.getCapacity();
 	                double roomCapacity = room.getCapacity();
 	                double percent = sectionCapacity/roomCapacity;
-	                
 	                // check for how full the room is and score appropriately
 	                if (percent == 1) { // optimal is having the room full
 	                	softScore -= 0;
