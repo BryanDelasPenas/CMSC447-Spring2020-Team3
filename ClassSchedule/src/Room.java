@@ -64,7 +64,7 @@ public class Room {
 	//To String function for ease of printing
 	@Override
 	public String toString() {
-		return classroom + " Capacity: " + Integer.toString(capacity);
+		return classroom + " Capacity: " + Integer.toString(capacity) + " Rank: " + rank;
 	}
 }
 

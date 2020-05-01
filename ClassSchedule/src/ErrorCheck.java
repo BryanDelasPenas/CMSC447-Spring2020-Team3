@@ -5,7 +5,7 @@ public class ErrorCheck {
 	
 	//Check if a course name follows typical convention
 	public void checkCourseName(String cName) {
-		Pattern p = Pattern.compile("^[ A-Za-z,&.:]+$");
+		Pattern p = Pattern.compile("^[ A-Za-z,&.:-]+$");
 		Matcher m = p.matcher(cName);
 		boolean isString = m.matches();
 		
@@ -20,8 +20,8 @@ public class ErrorCheck {
 		System.out.println(cName + " is a valid string for a course.");
 	}
 	//Check if a capacity is within a range of 10-999
-	public void checkCourseCap(String cap) {
-		Pattern p = Pattern.compile("^[1-9][0-9][0-9]*+$");
+	public void checkCap(String cap) {
+		Pattern p = Pattern.compile("^[1-9][0-9][0-9]?$");
 		Matcher m = p.matcher(cap);
 		boolean isString = m.matches();
 		
@@ -30,14 +30,15 @@ public class ErrorCheck {
 			System.exit(0);
 		}
 		else if(!isString) {
-			System.out.println(cap + " is not a valid capacity for a room, must be a number from 10-999");
+			System.out.println(cap + " is not a valid capacity, must be a number from 10-999");
 			System.exit(0);
 		}
-		System.out.println(cap + " is a valid capacity for a room.");
+		System.out.println(cap + " is a valid capacity.");
 	}
+	
 	//Check if a instructor has a valid name matching conventions and taking into account the possibility for someone being a 3rd or 4th
 	public void checkInstructor(String iName) {
-		Pattern p = Pattern.compile("^[A-Z][a-z]+(, )?[A-Z][a-z]+( )?[1-9]?$");
+		Pattern p = Pattern.compile("^[A-Z][a-z]+(, )?[A-Z]*[a-z]*( )?[1-9]?$");
 		Matcher m = p.matcher(iName);
 		boolean isString = m.matches();
 		
@@ -54,7 +55,7 @@ public class ErrorCheck {
 	
 	//Check if a course number matches from 100-999 
 	public void checkCourseNum(String cNum) {
-		Pattern p = Pattern.compile("^[1-9][0-9][0-9]$");
+		Pattern p = Pattern.compile("^[1-9][0-9][0-9][ces]{0,2}(/[1-9][0-9][0-9][ces]{0,2})?$");
 		Matcher m = p.matcher(cNum);
 		boolean isString = m.matches();
 		
@@ -83,5 +84,22 @@ public class ErrorCheck {
 			System.exit(0);
 		}
 		System.out.println(cTime + " is a valid course time.");
+	}
+	
+	//Matches time in course time in format of MW TT or MWF in increments of 30
+	public void checkRoomName(String rName) {
+		Pattern p = Pattern.compile("^[A-Z]{1}[a-z]+ ([0-9]{3})?&? ([A-Z]{1}[a-z]+)? [A-Z]$");
+		Matcher m = p.matcher(rName);
+		boolean isString = m.matches();
+		
+		if(rName.isEmpty()) {
+			System.out.println("Cell is empty, please provide an input.");
+			System.exit(0);
+		}
+		else if (!isString) {
+			System.out.println(rName + " is not a valid classroom name.");
+			System.exit(0);
+		}
+		System.out.println(rName + " is a valid classroom name.");
 	}
 }
