@@ -48,10 +48,11 @@ def read_building():
         # that has rooms that can hold a capacity of 30. If there is another way to impliment this, I will look for another way. 
       
         # Special case if it contains a comma, usally only engineering 122 , engineering 122A building will have this
-        if("," in new_string):
+        if("," in new_string and new_string not in building_list):
             string_cut = new_string.split()
             building_list.append(string_cut[0])        
-        
+        elif(new_string in building_list):
+            pass
         else:
             building_list.append(new_string)        
   
@@ -104,7 +105,10 @@ def calculate_distance(cordinate_list):
         
         # Get the distances 
         location_building = cordinate_list[i]
-        distance_list.append(distance.distance(location_building, location_tuple).km)
+        if(distance.distance(location_building, location_tuple).km in distance_list):
+            pass
+        else:
+            distance_list.append(distance.distance(location_building, location_tuple).km)
         
     return distance_list
     
@@ -119,10 +123,13 @@ def write_csv(building_list, distance_list):
     rel_path = r"CSV data files\Distance_from_ITE.csv"
     abs_file_path = os.path.join(script_dir, rel_path)
     
+    # Headings for the CSV file
+    field_list = ['Building Name', 'Distance from ITE']
+
     # Open the file 
-    file_name = open(abs_file_path, mode='w')
-    file_writer = csv.writer(file_name, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-   
+    file_name = open(abs_file_path, mode='w',newline='')
+    file_writer = csv.writer(file_name)
+    file_writer.writerow(field_list)
     # Iteratre through out both list 
     for i in range(len(distance_list)):
         file_writer.writerow([building_list[i], distance_list[i]])
