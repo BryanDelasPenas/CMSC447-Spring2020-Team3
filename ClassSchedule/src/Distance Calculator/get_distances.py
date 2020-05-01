@@ -10,6 +10,7 @@
 
 import csv
 import os
+import sys
 
 from geopy.geocoders import Nominatim
 from geopy import distance
@@ -17,51 +18,51 @@ from geopy import distance
 # Function: read_building 
 # Input  -  None
 # Output -  Returns a list of building names 
-def read_building(): 
+def read_building(file_input): 
     # Get the file path that is used, reads in Classroom.csv in another directory 
     script_path = os.path.dirname(__file__)
     script_dir = os.path.split(script_path)[0]
-    rel_path = r"CSV data files\Classroom.csv"
+    rel_path = file_input
     abs_file_path = os.path.join(script_dir, rel_path)
+    print(abs_file_path)
+    if(not os.path.isfile(abs_file_path)):
+        raise Exception("There is no file path , please in the main function enter the right file path")
     
-    try:
-        # Opens the file and creates the reader 
-        file_name = open(abs_file_path)
-        file_reader = csv.reader(file_name)
+    # Opens the file and creates the reader 
+    file_name = open(abs_file_path)
+    file_reader = csv.reader(file_name)
 
-        # Create the temp list and building list 
-        temp_list = [] 
-        building_list = []
+    # Create the temp list and building list 
+    temp_list = [] 
+    building_list = []
     
-        # Adds the reading output to a temp list 
-        for row in file_reader: 
-            temp_list.append(row)
+    # Adds the reading output to a temp list 
+    for row in file_reader: 
+        temp_list.append(row)
     
-        # For loop to get only buildings and remove 
-        for i in range(1, len(temp_list)):
-            building_name = temp_list[i][0]
+    # For loop to get only buildings and remove 
+    for i in range(1, len(temp_list)):
+        building_name = temp_list[i][0]
 
-            # Removes rooms leaving only buildings and lower cases it
-            new_string = ''.join([j for j in building_name if not j.isdigit()])
-            new_string = new_string.strip()
+        # Removes rooms leaving only buildings and lower cases it
+        new_string = ''.join([j for j in building_name if not j.isdigit()])
+        new_string = new_string.strip()
         
-            # This hard coded in, As there is no way to check if the building is valid or not. There is only 14 building in UMBC 
-            # that has rooms that can hold a capacity of 30. If there is another way to impliment this, I will look for another way. 
-      
-            # Special case if it contains a comma, usally only engineering 122 , engineering 122A building will have this
-            if("," in new_string and new_string not in building_list):
-                string_cut = new_string.split()
-                building_list.append(string_cut[0])        
-            elif(new_string in building_list):
-                pass
-            else:
-                building_list.append(new_string)        
+        if not new_string:
+            raise Exception("Building name cannot be empty")
+
+        # Special case if it contains a comma, usally only engineering 122 , engineering 122A building will have this
+        if("," in new_string and new_string not in building_list):
+            string_cut = new_string.split()
+            building_list.append(string_cut[0])        
+        elif(new_string in building_list):
+            pass
+        else:
+            building_list.append(new_string)        
   
-        file_name.close
-        # returns the buildiing list
-        return building_list 
-    except:
-        raise Exception("File is not found, please input the right file")
+    file_name.close
+    # returns the buildiing list
+    return building_list 
 # Function: get_cordinates
 # Input  -  Takes in a list of building names 
 # Output -  Returns a list of tuples where it contains valid (long, lad)
@@ -78,13 +79,13 @@ def get_cordinate(building_list):
         try:
             # Initalize the tuple in the for loop
             cordinate_tuple = tuple()
-        
+
             location = locator.geocode(building_list[i] + ", Catonsville, Maryland")
             cordinate_tuple = (location.latitude, location.longitude)
             cordinate_list.append(cordinate_tuple) 
         
         except:
-            raise Exception("That is not a valid location")
+            raise Exception("That location is not a valid location")
    
     # return the list 
     return cordinate_list
@@ -132,7 +133,7 @@ def write_csv(building_list, distance_list):
     file_name = open(abs_file_path, mode='w',newline='')
     file_writer = csv.writer(file_name)
     file_writer.writerow(field_list)
-    # Iteratre through out both list 
+    # Iterate through out both list 
     for i in range(len(distance_list)):
         file_writer.writerow([building_list[i], distance_list[i]])
 
@@ -141,7 +142,7 @@ def write_csv(building_list, distance_list):
 # Function main
 # Input  - None
 # Output - None 
-def main():
+def main(argv):
     
     # Intilize the list 
     building_list = []
@@ -149,7 +150,7 @@ def main():
     distance_list = []
     
     # Call read_building 
-    building_list = read_building() 
+    building_list = read_building(argv) 
     
     # Call get_cordinate
     cordinate_list = get_cordinate(building_list)
@@ -160,11 +161,11 @@ def main():
     # Call write_csv
     write_csv(building_list,distance_list)
 
-    # Print out for testing purposes
+    #print 
     #print(building_list)
     #print(cordinate_list)
     #print(distance_list)
     pass
 
 if __name__ == "__main__":
-    main()
+    main(r"CSV data files\Classroom.csv")
