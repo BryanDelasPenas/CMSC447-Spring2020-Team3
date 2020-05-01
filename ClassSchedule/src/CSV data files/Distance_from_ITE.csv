@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Building Name,Distance from ITE
 Public Policy,0.462861757
 Engineering,0.077113017
@@ -8,3 +9,15 @@ Sherman Hall,0.09803178
 Biological Sciences,0.203221019
 Interdisciplinary Life S,0.290032766
 Mathematics & Psychology,0.157952157
+=======
+Building Name,Distance from ITE
+Public Policy,0.4628617568580269
+Engineering,0.07711301683057233
+Information Technology,0.0
+Interdisciplinary Life S,0.2900327656061474
+Sondheim Hall,0.1334672007593534
+Meyerhoff Hall,0.1517558066332007
+Sherman Hall,0.09803177987893084
+Biological Sciences,0.20322101857538127
+Mathematics & Psychology,0.15795215745977964
+>>>>>>> branch 'master' of https://github.com/BryanDelasPenas/CMSC447-Spring2020-Team3
