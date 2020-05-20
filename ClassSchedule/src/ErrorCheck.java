@@ -19,6 +19,7 @@ public class ErrorCheck {
 		}
 		System.out.println(cName + " is a valid string for a course.");
 	}
+	
 	//Check if a capacity is within a range of 10-999
 	public void checkCap(String cap) {
 		Pattern p = Pattern.compile("^[1-9][0-9][0-9]?$");
@@ -38,7 +39,7 @@ public class ErrorCheck {
 	
 	//Check if a instructor has a valid name matching conventions and taking into account the possibility for someone being a 3rd or 4th
 	public void checkInstructor(String iName) {
-		Pattern p = Pattern.compile("^[A-Z][a-z]+(, )?[A-Z]*[a-z]*( )?[1-9]?$");
+		Pattern p = Pattern.compile("^[A-Z]{0,1}[a-z]+(, )?[A-Z]*[a-z]*( )?[1-9]?$");
 		Matcher m = p.matcher(iName);
 		boolean isString = m.matches();
 		
@@ -86,9 +87,9 @@ public class ErrorCheck {
 		System.out.println(cTime + " is a valid course time.");
 	}
 	
-	//Matches time in course time in format of MW TT or MWF in increments of 30
+	//Checks for room name consisting of only characters or numbers and ampersands
 	public void checkRoomName(String rName) {
-		Pattern p = Pattern.compile("^[A-Z]{1}[a-z]+ ([0-9]{3})?&? ([A-Z]{1}[a-z]+)? [A-Z]$");
+		Pattern p = Pattern.compile("^[A-Za-z0-9 &]+$");
 		Matcher m = p.matcher(rName);
 		boolean isString = m.matches();
 		
@@ -101,5 +102,38 @@ public class ErrorCheck {
 			System.exit(0);
 		}
 		System.out.println(rName + " is a valid classroom name.");
+	}
+	
+	//Checks for a section consisting of only a single number
+	public void checkCourseSection(String section) {
+		Pattern p = Pattern.compile("^[1-9]{1}$");
+		Matcher m = p.matcher(section);
+		boolean isString = m.matches();
+		
+		if(section.isEmpty()) {
+			System.out.println("Cell is empty, please provide an input.");
+			System.exit(0);
+		}
+		else if (!isString) {
+			System.out.println(section + " is not a valid section number.");
+			System.exit(0);
+		}
+		System.out.println(section + " is a valid section number.");
+	}
+	
+	//Checks for version consisting of only a single letter
+	public void checkCourseVersion(String version) {
+		Pattern p = Pattern.compile("^[a-z]{1}$");
+		Matcher m = p.matcher(version);
+		boolean isString = m.matches();
+		//This is allowed to have an empty string
+		if(version.isEmpty()) {
+			return;
+		}
+		if (!isString) {
+			System.out.println(version + " is not a valid version.");
+			System.exit(0);
+		}
+		System.out.println(version + " is a valid version.");
 	}
 }

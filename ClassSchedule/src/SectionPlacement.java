@@ -10,7 +10,8 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 //Planning Solution Class so OptaPlanner knows this contains all input and outputs
 @PlanningSolution
 public class SectionPlacement {
-
+	
+	//Variable Instances
 	private List<Room> roomList;
 	private List<Section> sectionList;
 	private HardSoftScore score;
@@ -49,12 +50,5 @@ public class SectionPlacement {
 	public void setScore(HardSoftScore score){
 		this.score = score;
 	}
-	
-	//@Override
-	//public String toString() {
-	//	for (Section s : sectionList) {
-	//		s.toString();
-	//	}
-	//}
 	
 }

@@ -66,7 +66,7 @@ public class ScoreCalculator implements EasyScoreCalculator<SectionPlacement> {
 	                
 	                // score based on location, less optimal further away but all are feasible so less penalty
 	                // but location is more important than percent full, so slightly larger penalty
-	                softScore -=  (room.getRank() + 11);
+	                softScore -=  (room.getRank());
 
 	            	section.setRoom(room);
 	            }

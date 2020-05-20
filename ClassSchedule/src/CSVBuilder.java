@@ -22,8 +22,7 @@ public class CSVBuilder {
 		//to hold all of the rooms and rankings
 		List<Room> room_rankings = new ArrayList<Room>(); 
 		//Block to import room distance information
-		try
-		{	
+		try {	
 			br_rooms = new BufferedReader(new FileReader(file_distance));
 			while ((line_rooms = br_rooms.readLine()) != null)
 			{
@@ -33,10 +32,12 @@ public class CSVBuilder {
 					iteration_rooms++;
 					continue;
 				}
+				ErrorCheck ec = new ErrorCheck();
 				// This keeps the commas inside of the quotes
 				String[] data_room = line_rooms.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);				
 				// Removes the starting quotes when necessary 
 				String name = data_room[0].replaceAll("^\"|\"$", "");
+				ec.checkRoomName(name);
 				double distance = Double.parseDouble(data_room[1]);
 				// add the room to list which will be used for rankings
 				room_rankings.add(new Room(name, distance));
@@ -67,7 +68,6 @@ public class CSVBuilder {
 			System.out.println(tempRoom.toString());
 			tempRoom.setRank(rank);
 			rank++;
-			//System.out.println(rank);
 			room_rankings.set(i, tempRoom);
 		}
 		return room_rankings;
@@ -75,10 +75,12 @@ public class CSVBuilder {
 	}
 	
 	public SectionPlacement createSections(){
+		//Create Objects to be used
 		CSVBuilder dataCreate = new CSVBuilder();
 		List<Room> room_rankings = dataCreate.createRooms();
 		List<Room> room_list = new ArrayList<Room>();
 		List<Section> schedule_list = new ArrayList<Section>();
+		
 		//Instantiate Error Checking Class
 		ErrorCheck ec = new ErrorCheck();
 		// Create a string for the file name 
@@ -125,6 +127,7 @@ public class CSVBuilder {
 				for(Room t: room_rankings) {
 					if(r.getClassroom().contains(t.getClassroom())) {
 						r.setRank(t.getRank());
+						r.setDistance(t.getDistance());
 					}
 				}
 			}
@@ -188,7 +191,8 @@ public class CSVBuilder {
 				ec.checkCourseNum(course_number_string);
 				ec.checkCourseName(course_title_string);
 				ec.checkInstructor(instructor_string);
-				
+				ec.checkCourseSection(section_string);
+				ec.checkCourseVersion(version_string);
 				//Check the time before parsing to make readable
 				ec.checkCourseTime(data_schedule[6]);
 				

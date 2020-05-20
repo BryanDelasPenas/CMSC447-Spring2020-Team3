@@ -17,7 +17,7 @@ public class Room {
 		classroom = name;
 	}
 	
-	// overloaded constructor for the ranking
+	//Overloaded constructor for the ranking
 	public Room(String name, double distance) {
 	   this.classroom = name;
 	   this.distance = distance;
@@ -26,6 +26,11 @@ public class Room {
 	// setter for rank
 	public void setRank(int rank) {
 		this.rank = rank;
+	}
+	
+	//Setter for distance
+	public void setDistance(double distance) {
+		this.distance = distance;
 	}
 	
 	//Getter for distance
@@ -64,7 +69,7 @@ public class Room {
 	//To String function for ease of printing
 	@Override
 	public String toString() {
-		return classroom + " Capacity: " + Integer.toString(capacity) + " Rank: " + rank;
+		return classroom + " Capacity: " + Integer.toString(capacity) + " Rank: " + rank + " Distance: " + distance;
 	}
 }
 

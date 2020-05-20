@@ -132,7 +132,7 @@ def write_csv(building_list, distance_list):
     file_name = open(abs_file_path, mode='w',newline='')
     file_writer = csv.writer(file_name)
     file_writer.writerow(field_list)
-    # Iteratre through out both list 
+    # Iterate through out both list 
     for i in range(len(distance_list)):
         file_writer.writerow([building_list[i], distance_list[i]])
 
