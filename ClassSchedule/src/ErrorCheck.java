@@ -136,4 +136,44 @@ public class ErrorCheck {
 		}
 		System.out.println(version + " is a valid version.");
 	}
+
+	// makes sure the format of the classroom file is correct (CSV and correct number of variables) 
+	public void checkClassroomCsv(String data[]) {
+		if (data.length != 2) {
+			System.out.println("Classroom CSV input does not have a valid length - check delimiter to make sure it's a csv");
+			System.exit(0);
+		}
+		else {
+			System.out.println("Classroom CSV has correct delimiter and data length");
+			return;
+		}
+	}
+	
+	// makes sure the format of the distance from ite file is correct (CSV and correct number of variables) 
+	public void checkDistanceCsv(String data[]) {
+		if (data.length != 2) {
+			System.out.println("Distance from ITE CSV input does not have a valid length - check delimiter to make sure it'ss a csv");
+			System.exit(0);
+		}
+		else {
+			System.out.println("Distance from ITE CSV has correct delimiter and data length");
+			return;
+		}
+	}
+	
+	public void checkScheduleCsv(String data[]) {
+		if (data.length < 8) {
+			System.out.println("Schedule CSV input does not have a valid length (too short). Make sure there are 8 comma separated columns.");
+			System.exit(0);
+		}
+		if (data.length > 8) {
+			System.out.println("Schedule CSV input does not have a valid length (too long). Make sure there are 8 comma separated columns.");
+			System.exit(0);
+		}
+		else {
+			System.out.println("Correct number of columns in schedule csv.");
+			return;
+		}
+
+	}
 }

@@ -11,6 +11,7 @@ import java.io.FileWriter;
 public class CSVBuilder {
 
 	public List<Room> createRooms(){
+		ErrorCheck ec = new ErrorCheck();
 		// Create a string for the file name 
 		String file_distance = "src/CSV data files/Distance_from_ITE.csv";
 		// Set the buffered reader, 
@@ -32,9 +33,9 @@ public class CSVBuilder {
 					iteration_rooms++;
 					continue;
 				}
-				ErrorCheck ec = new ErrorCheck();
 				// This keeps the commas inside of the quotes
 				String[] data_room = line_rooms.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);				
+				ec.checkDistanceCsv(data_room);
 				// Removes the starting quotes when necessary 
 				String name = data_room[0].replaceAll("^\"|\"$", "");
 				ec.checkRoomName(name);
@@ -109,7 +110,8 @@ public class CSVBuilder {
 				}
 				// This keeps the commas inside of the quotes
 				String[] data_classroom = line_classroom.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-				
+				// check to be sure the csv is correct length & delimiter
+				ec.checkClassroomCsv(data_classroom);
 				// Removes the starting quotes when necessary 
 				data_classroom[0] = data_classroom[0].replaceAll("^\"|\"$", "");
 				
@@ -174,7 +176,8 @@ public class CSVBuilder {
 				}
 				// This keeps the commas inside of the quotes
 				String[] data_schedule = line_schedule.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-				
+				// check for valid input length
+				ec.checkScheduleCsv(data_schedule);
 				// Removes the starting quotes when necessary 
 				data_schedule[5] = data_schedule[5].replaceAll("^\"|\"$", "");
 				
